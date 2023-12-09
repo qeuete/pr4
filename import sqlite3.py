@@ -129,6 +129,10 @@ def show_tovars(db):
 def add_tovar(db):
     name = input("Введите название товара: ")
     price = int(input("Введите цену товара: "))
+    if not isinstance(price, (int)) or price < 2000:
+            print("Ошибка: Цена должна быть быть больше.")
+            return
+
     db.add_tovar(name, price)
     print("Товар добавлен успешно!")
     

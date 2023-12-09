@@ -65,6 +65,10 @@ class Database:
         self.conn.commit()
 
     def add_tovar(self, name, price):
+        if not isinstance(price, (int, float)) or price < 2000:
+            print("Ошибка: Цена должна быть быть больше.")
+            return
+
         self.cursor.execute('''
             INSERT INTO tovars (name, price)
             VALUES (?, ?)
